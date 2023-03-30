@@ -1,0 +1,17 @@
+<filestorage source>
+   path /home/mcfaddenm/repos/rfaqsl/backend/instance/var/filestorage/Data.fs
+   blob-dir /home/mcfaddenm/repos/rfaqsl/backend/instance/var/blobs
+</filestorage>
+
+<relstorage destination>
+    shared-blob-dir false
+    blob-dir /home/mcfaddenm/repos/rfaqsl/backend/instance/var/blobcache
+    blob-cache-size 10mb
+    <mysql>
+       db rfa_qsl
+       user plone
+       passwd plone
+       host localhost
+       port 3306
+    </mysql>
+</relstorage>

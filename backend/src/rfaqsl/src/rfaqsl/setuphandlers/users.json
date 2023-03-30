@@ -1,0 +1,19 @@
+{
+  "portal": [
+    {
+      "email": "mcfaddenm@rfa.org",
+      "properties": {
+        "fullname": "RFA QSL",
+        "location": "World"
+      },
+      "groups": [
+      ],
+      "roles": [
+        "Member"
+      ],
+      "username": "rfaqsl"
+    }
+  ],
+    "team": [
+  ]
+}

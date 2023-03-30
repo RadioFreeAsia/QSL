@@ -1,0 +1,13 @@
+---
+users:
+
+  'plone':
+    name: 'Plone installation'
+    email: 'mcfaddenm@rfa.org'
+    public_keys:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDWZSRNhybsAF0elYL8cMf1nRQKm/x91ZDsCCroIQzgBGaljPrs1XxUK/I4QIQx4hwW1SfYHzyfj/DUzJSbWM2SiRKWvCH3OuPaMaswaSwa2Ij1yzBMr3OJ+c9N+EkKSuI38loU47yGI1VJGFwJEhKmX8Ty0BEgzSclOkzl4DfdWyBHDkUWSvnodxVPADE00IkbVs+5ST7VSXZZFo2JIjHsbfaNJJbGhPT4FUvKhCPbMwnvPphm8MNogFfhSC939cqrqMBh9pp19/EVwoji5u8VnmTQWPkchDhA4EzIRFZbFpnNNE8PIQONKd5H5fXrpRLuHGRNyN7qIv0FNM2Vcwa1yQFHJXQ4X0Bhp+sSGbzBD3JmrOLiR3SHKANrmJkdelhLjmAozGPRyuZCYzaombrgUbqg/2D8iE9J0b6/5BAlC4eFPGc8DH5F6nUvGa1R0b0sWGG9v8djxr7t4QWR/l1a8YtZLFOcDJxJl46kOws22pcNj1NMS2RcCSwRm9KkLxE= mcfaddenm@Flip-MSI'
+    state: present
+    shell: '/bin/bash'
+    groups:
+      - 'docker'
+      - 'plone'

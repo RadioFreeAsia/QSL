@@ -1,0 +1,64 @@
+
+Before we start, we need to configure some stuff:
+1. make sure the aws cli is available on the shell.
+  google up "ubuntu install aws cli" or something similar to your needs.
+
+2. configure the aws cli with your credentials.
+   The goal is to authenticate to aws to push docker images.  This is only ONE way to do that.
+   These instructions get you working, but they are likely not best practice for security and certainly are not a substitute for learning the nuances of aws authentication.
+
+   As long a you can authenticate to ECR, you're good for all other steps below.
+   Feel free to use a more secure method of saving authentication tokens than described here.
+
+
+Get Credentials from aws so your command line works.
+  Go to IAM, then "My Security Credentials"
+  Scroll down (or find) "Access Keys"
+  Create one if necessary.
+
+use 'aws configure' to add your credentials.
+
+    AWS Access Key ID []:   ABDCEFG1234567AAAVVV
+    AWS Secret Access Key []: aBcDeFgHiJ1234567890
+    Default region name [us-east-1]:
+    Default output format [json]:
+
+
+Use the 'get-login-password' aws command described here.
+ https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html
+It will use the credentials you set above.
+
+
+    export region=us-east-1
+    export account_id=300000000001
+
+    aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $aws_account_id.dkr.ecr.$region.amazonaws.com
+
+
+Now, in AWS console (the aws web site) go to Amazon Elastic Container Registry (ECR) and create a new repository.
+Name it the same as 'project_slug' from the cookiecutter plone starter, or very similar.
+
+Let's set a shell variable to hold that name:
+use the 'project_slug' from the cookiecutter CLI which defaults to 'plone-site'
+
+   export repo_name=plone-site
+
+enter that repository, and click 'view push commands'
+
+Note that we already did step 1 above while configuring credentials above, so that's done.
+`aws ecr get-login-password | docker login`
+
+step 2 is done by 'make frontend' and 'make backend' already  (your image is already built)
+
+step 3.
+"After the build completes, tag your image so you can push the image to this repository:"
+    docker tag $repo_name:latest $account_id.dkr.ecr.us-east-1.amazonaws.com/$repo_name:latest
+
+---
+copy env_dev to env_prod and update it.
+
+Update the 'prod.yml' file in inventory with the new info:
+
+
+
+and 'your-project-prod.yml' in the host_vars folder

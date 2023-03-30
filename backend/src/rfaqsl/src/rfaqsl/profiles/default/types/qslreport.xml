@@ -1,0 +1,94 @@
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:indexer="http://namespaces.plone.org/supermodel/indexer" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
+  <schema>
+    <field name="location" type="zope.schema.TextLine">
+      <default>Boston, USA</default>
+      <description>Enter either a city &amp; country name in the format (City, Country)&#13;
+&#13;
+Or a latitude longitude in Decimal Degrees Format with N-S and E-W indicators (41.40338 N, 112.17403 W)</description>
+      <max_length>120</max_length>
+      <title>Location of Received Signal</title>
+    </field>
+    <field name="datetime" type="zope.schema.Datetime">
+      <description>enter the date and time when the signal was received.</description>
+      <title>Date and Time of received signal</title>
+    </field>
+    <field name="duration" type="zope.schema.Int">
+      <default>10</default>
+      <description>Enter the amount of time, in minutes, spent listening.</description>
+      <title>Time Spent Listening</title>
+    </field>
+    <field name="broadcast_language" type="zope.schema.Choice">
+      <default>Burmese</default>
+      <description>Enter the language used in the transmission</description>
+      <title>Broadcast Language</title>
+      <values>
+        <element>Burmese</element>
+        <element>Cantonese</element>
+        <element>English</element>
+        <element>Khmer</element>
+        <element>Korean</element>
+        <element>Lao</element>
+        <element>Mandarin</element>
+        <element>Tibetan</element>
+        <element>Uyghur</element>
+        <element>Vietnamese</element>
+      </values>
+    </field>
+    <field name="signal_strenth" type="zope.schema.Choice">
+      <default>Excellent (5)</default>
+      <description>Rate the signal strenth</description>
+      <title>Signal Strenth</title>
+      <values>
+        <element>Excellent (5)</element>
+        <element>Good (4)</element>
+        <element>Fair (3)</element>
+        <element>Poor (2)</element>
+        <element>Barely Audible (1)</element>
+      </values>
+    </field>
+    <field name="interference" type="zope.schema.Choice">
+      <description>Interference from other stations on the same or adjacent frequencies.</description>
+      <title>Interference</title>
+      <values>
+        <element>Nil (5)</element>
+        <element>Slight (4)</element>
+        <element>Moderate (3)</element>
+        <element>Severe (2)</element>
+        <element>Extreme (1)</element>
+      </values>
+    </field>
+    <field name="noise" type="zope.schema.Choice">
+      <description>The amount of atmospheric or man-made noise.</description>
+      <title>Noise</title>
+      <values>
+        <element>Nil (5)</element>
+        <element>Slight (4)</element>
+        <element>Moderate (3)</element>
+        <element>Severe (2)</element>
+        <element>Extreme (1)</element>
+      </values>
+    </field>
+    <field name="propigation" type="zope.schema.Choice">
+      <description>Was the signal steady or did it fade in and out</description>
+      <title>Propigation</title>
+      <values>
+        <element>Nil (5)</element>
+        <element>Slight (4)</element>
+        <element>Moderate (3)</element>
+        <element>Severe (2)</element>
+        <element>Extreme (1)</element>
+      </values>
+    </field>
+    <field name="overall_rating" type="zope.schema.Choice">
+      <description>Overall listening experience</description>
+      <title>Overall Rating</title>
+      <values>
+        <element>Excellent (5)</element>
+        <element>Good (4)</element>
+        <element>Fair (3)</element>
+        <element>Poor (2)</element>
+        <element>Unusable (1)</element>
+      </values>
+    </field>
+  </schema>
+</model>
