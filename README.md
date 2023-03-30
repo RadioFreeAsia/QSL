@@ -5,7 +5,15 @@
 [![Backend Tests](https://github.com/collective/rfaqsl/actions/workflows/backend.yml/badge.svg)](https://github.com/collective/rfaqsl/actions/workflows/backend.yml)
 [![Frontend Tests](https://github.com/collective/rfaqsl/actions/workflows/frontend.yml/badge.svg)](https://github.com/collective/rfaqsl/actions/workflows/frontend.yml)
 
-RFA QSL 
+This repo contains the addons and customizations required by the RFA QSL website.
+
+Note that although you can deploy a working instance of the QSL website directly from this code base, it is designed to be used (git cloned) only onto development and build systems.   The actual deployment of the QSL application should be in the form of a docker image onto a platform designed to run docker containers.
+
+Two containers are built from this one single codebase - the 'backend' container and the 'frontend' container.
+
+The database that contains Plone content, which the backend uses, is not stored in this or any repositories and is maintained as a separate database installation. Documentation on database setup is also not maintained here to intentionally create a hard and deliberate distinction between "code and content". and "database implementation".  If this repo is downloaded, built, installed and run, you will not see the same content that is in production until the production database is also copied and configured to run on the same system, and this is entirely by design and intentional.
+
+It is absolutely not recommended to configure any instances of this application to a production database unless you know exactly what you are doing.  Best practice is to always run a separate instance of the content database from production to avoid unintentional writes or corruption of a production database.   You have been warned.
 
 ## Quick start
 
@@ -19,7 +27,7 @@ RFA QSL
 ### Install
 
 ```shell
-git clone git@github.com:collective/rfaqsl.git
+git clone git@github.com:RadioFreeAsia/QSL/qsl.git
 cd rfaqsl
 make install
 ```
