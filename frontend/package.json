@@ -4,9 +4,9 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "start": "NODE_OPTIONS=--openssl-legacy-provider razzle start",
+    "start": "razzle start",
     "postinstall": "make omelette && make patches",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider razzle build --noninteractive",
+    "build": "razzle build --noninteractive",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --max-warnings=0 --fix 'src/**/*.{js,jsx}'",
     "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx}' > eslint.xml",
@@ -30,8 +30,8 @@
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
     "develop:npx": "npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https",
     "develop": "missdev --config=jsconfig.json --output=addons --fetch-https",
-    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
-    "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "addons": [
     "@eeacms/volto-accordion-block",
