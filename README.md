@@ -88,7 +88,7 @@ The full documentation for a full deployment as developed for this package can b
 
 For a more manual deployment you can cd into either the **backend** or **frontend** directories and run `docker build`.  Docker will find `Dockerfile` in that directory and use it.
 
-For example, `docker build --tag frontend-test:latest` to build a frontend image for your local machine, and the 'tag' is simply a name for that specific build.
+For example, `docker build --tag frontend-test:latest .` to build a frontend image for your local machine, and the 'tag' is simply a name for that specific build.
 
 see https://docs.docker.com/build/building/packaging/
 
