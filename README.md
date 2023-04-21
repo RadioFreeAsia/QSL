@@ -88,9 +88,32 @@ The full documentation for a full deployment as developed for this package can b
 
 For a more manual deployment you can cd into either the **backend** or **frontend** directories and run `docker build`.  Docker will find `Dockerfile` in that directory and use it.
 
-For example, `docker build --tag frontend-test:latest .` to build a frontend image for your local machine, and the 'tag' is simply a name for that specific build.
+For example, to build a frontend image for your local machine, and the 'tag' is simply a name for that specific build.
 
-see https://docs.docker.com/build/building/packaging/
+  `docker build --tag frontend-test:latest .`
+  
+  and then run it on your local development enviornment and test things out.
+  
+  `docker run --name frontend-test --link plone6-backend:backend -e RAZZLE_API_PATH=http:/localhost:8080/Plone -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -d -p 3000:3000 frontend-test:latest`
+
+Once you have an satisfactory image built, you create a tarball and ship it up to the destination, production machine, like an ec2 instance:
+
+   `docker save 'frontend-test:latest' > frontend.tar`
+   
+   `scp frontend.tar user@ec2-instance.compute-1.amazonaws.com:`
+
+access the remote machine, and install the image into docker
+
+    `ssh user@ec2-instance.compute-1.amazonaws.com`
+
+    `docker load < frontend.tar`
+
+And run a new container, changing the cli argments for the new enviornment:
+
+    `docker run --name plone6-frontend --link plone6-backend:backend -e RAZZLE_API_PATH=http://ec2-instance.compute-1.amazonaws.com:8080/Plone -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -d -p 3000:3000 frontend-test:latest`
+
+
+see https://docs.docker.com/build/building/packaging/ for even better ways to do this.
 
 
 ## Credits
