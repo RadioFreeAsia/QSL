@@ -126,16 +126,22 @@ This builds and runs the plone backend on localhost.
 
 To deploy
    
-    make build-image
+     make build-image
    
-    docker save docker.io/collective/rfaqsl-backend:latest > backend.tar
+     docker save docker.io/collective/rfaqsl-backend:latest > backend.tar
    
-    scp backend.tar user@destination.machine
+     scp backend.tar user@destination.machine
    
-    ssh user@destination.machine
+     ssh user@destination.machine
    
-    docker load < backend.tar
+     docker load < backend.tar
    
+ To run
+ 
+     sudo docker run --name plone6-backend -e SITE=Plone -e CORS_ALLOW_ORIGIN='*' -d -p 8080:8080 plone/plone-backend:6.0-backend:6.0
+
+ 
+     
     
 
 
