@@ -138,7 +138,7 @@ To deploy
    
  To run
  
-     sudo docker run --name plone6-backend -e SITE=Plone -e CORS_ALLOW_ORIGIN='*' -d -p 8080:8080 plone/plone-backend:6.0-backend:6.0
+     sudo docker run --name plone6-backend -e SITE=Plone -e CORS_ALLOW_ORIGIN='*' -d -p 8080:8080 plone/plone-backend:6.0
 
  
      
