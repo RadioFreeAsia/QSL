@@ -6,6 +6,10 @@
 
   <configure zcml:condition="installed AccessControl.security">
     <!-- -*- extra stuff goes here -*- -->
+     <permission
+        id="rfaqsl.AddQslReport"
+        title="RFAQSL: Create a new QSL Report"
+     />
 
   </configure>
 
