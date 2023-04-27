@@ -88,7 +88,9 @@ The full documentation for a full deployment as developed for this package can b
 
 For a more manual deployment you can cd into either the **backend** or **frontend** directories and run `docker build`.  Docker will find `Dockerfile` in that directory and use it.
 
-For example, to build a frontend image for your local machine, and the 'tag' is simply a name for that specific build.
+#### Frontend:
+
+to build a frontend image for your local machine, and the 'tag' is simply a name for that specific build.
 
      docker build --tag frontend-test:latest .
   
@@ -111,6 +113,36 @@ access the remote machine, and install the image into docker
 And run a new container, changing the cli argments for the new enviornment:
 
      docker run --name plone6-frontend --link plone6-backend:backend -e RAZZLE_API_PATH=http://ec2-instance.compute-1.amazonaws.com:8080/Plone -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -d -p 3000:3000 frontend-test:latest
+
+
+#### Backend
+
+After modifying your site in src/rfaqsl - you can test your changes with
+
+    make build-dev
+    make start
+    
+This builds and runs the plone backend on localhost.
+
+To deploy
+   
+     make build-image
+   
+     docker save docker.io/collective/rfaqsl-backend:latest > backend.tar
+   
+     scp backend.tar user@destination.machine
+   
+     ssh user@destination.machine
+   
+     docker load < backend.tar
+   
+ To run
+ 
+     sudo docker run --name plone6-backend -e SITE=Plone -e CORS_ALLOW_ORIGIN='*' -d -p 8080:8080 plone/plone-backend:6.0
+
+ 
+     
+    
 
 
 see https://docs.docker.com/build/building/packaging/ for even better ways to do this.
